@@ -1,0 +1,120 @@
+{
+  "layer": "top",
+  "position": "top",
+  "exclusive": true,
+  "spacing" : 0,
+  "modules-left": [
+  "niri/workspaces",
+  "mpris"
+  ],
+
+  "modules-center": ["clock"],
+
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "pulseaudio", 
+    "backlight",
+    "battery",
+    "custom/lock"     
+ ],
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
+
+
+  "mpris": {
+  "format": "{player_icon} {dynamic}",
+  "format-paused": "{status_icon} <i>{dynamic}</i>",
+  "player": "playerctld",
+  "interval": 1,
+  "tooltip": false,
+  "dynamic-len": 36,
+  "title-len": 25,
+  "artist-len": 20,
+  "album-len": 20,
+  "dynamic-order": ["title", "artist", "album", "position"],
+  "dynamic-importance-order": ["title", "artist", "album", "position"],
+  "dynamic-separator": " - ",
+  "truncate-hours": false,
+"status-icons": {
+  "playing": "<span color='#1db954'>🎵</span>",
+  "paused": "<span color='#f1c40f'>▶</span>",
+  "stopped": "<span color='#e74c3c'>⏹</span>"
+},
+"player-icons": {
+  "default": "<span color='#89b4fa'>🎵 </span>",
+  "spotify": "<span color='#1db954'> </span>",
+  "vlc": "<span color='#e67e22'>󰕼 </span>",
+  "mpv": "<span color='#3498db'> </span>"
+},
+    "on-click-right": "/home/hemant/.config/mpris/mpris.sh",
+    "on-click": "playerctl play-pause"
+  },
+
+
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}", 
+    "format-connected":"{icon}",
+    "format-icons":{
+        "on":"󰂯",
+        "off": "󰂲",
+        "connected": "󰂱"
+        },
+    "on-click": "blueman-manager",
+    "tooltip-format-connected":"{device_enumerate}"
+  },
+
+  "clock": {
+    "timezone": "Asia/Kolkata",
+    "tooltip": false,
+    "format": "{:%I:%M %p -  %A, %d}",
+    "interval": 1
+  },
+
+"network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤠",
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "interval": 5,
+    "on-click": "~/.local/bin/wifi-menu"
+},
+
+ 
+  "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
+        "tooltip": false
+  },
+  
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "battery": {
+        "interval":2,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+  }
+}
